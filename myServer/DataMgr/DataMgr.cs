@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using MySql.Data.MySqlClient;
 using Npgsql;
 using Org.BouncyCastle.Crypto.Tls;
@@ -7,24 +8,25 @@ namespace myServer.DataMgr
 {
     public class DataMgr
     {
-        private MySqlConnection sqlconn;
+        private MySqlConnection mysqlConn;
+        private NpgsqlConnection PGConn;
         //单例模式
         public static DataMgr instance;//构造函数实现单例和连接
 
         public DataMgr()
         {
             instance = this;
-            ConnectMysql();
+            ConnectPG();
         }
 
         public void ConnectPG()
         {
             //数据库
             string connStr = "Host=localhost;Port=5432;Username=unityServer;Password=5432;Database=game";
-            var sqlconn = new NpgsqlConnection(connStr);
+            var PGConn = new NpgsqlConnection(connStr);
             try
             {
-                sqlconn.Open();
+                PGConn.Open();
             }
             catch (Exception e)
             {
@@ -32,23 +34,44 @@ namespace myServer.DataMgr
                 return;
             }
         }
-
-        public void ConnectMysql()
+        
+        
+        //是否存在用户
+        private bool CanRegister(string id)
         {
-            //数据库
-            string connStr = "Database=game;DataSource=127.0.0.1;";
-            connStr += "User Id=root;Password=123456l;port=3306";
-            sqlconn = new MySqlConnection(connStr);
+            //防sql注入
+            if (!IsSafeStr(id))
+                return false;
+            //查询id是否存在
+            string cmdStr = string.Format("seleect * from user where id='{0}';",id);
+            NpgsqlCommand cmd = new NpgsqlCommand(cmdStr,PGConn);
             try
             {
-                sqlconn.Open();
+                NpgsqlDataReader dataReader = cmd.ExecuteReader();
+                bool hasRows = dataReader.HasRows;
+                dataReader.Close();
+                return !hasRows;
             }
             catch (Exception e)
             {
-                Console.WriteLine("[DataMgr]connect : "+e.Message);
-                return;
+                Console.WriteLine("[DataMgr]CanRegister fail : " + e.Message);
+                return false;
             }
-            
+        }
+
+        //注册
+        public bool Register(string id, string pw)
+        {
+            //防sql注入
+            if (!IsSafeStr(id) || !IsSafeStr(pw))
+            {
+                Console.WriteLine("[DataMgr]Register: 使用非法字符");
+            }
+        }
+
+        public bool IsSafeStr(string str)    //判定安全字符
+        {
+            return !Regex.IsMatch(str, @"[-|;|,|\/|\(|\)|\[|\]|\{|\}|%|@|\*|!|\' ]");
         }
 
     }
