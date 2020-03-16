@@ -1,0 +1,6 @@
+C:\Users\44343\RiderProjects\myServer\myServer\bin\Debug\myServer.exe
+C:\Users\44343\RiderProjects\myServer\myServer\bin\Debug\myServer.pdb
+C:\Users\44343\RiderProjects\myServer\myServer\obj\Debug\myServer.csprojAssemblyReference.cache
+C:\Users\44343\RiderProjects\myServer\myServer\obj\Debug\myServer.csproj.CoreCompileInputs.cache
+C:\Users\44343\RiderProjects\myServer\myServer\obj\Debug\myServer.exe
+C:\Users\44343\RiderProjects\myServer\myServer\obj\Debug\myServer.pdb
