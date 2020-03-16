@@ -67,6 +67,8 @@ namespace myServer.DataMgr
             {
                 Console.WriteLine("[DataMgr]Register: 使用非法字符");
             }
+
+            return false;
         }
 
         public bool IsSafeStr(string str)    //判定安全字符
