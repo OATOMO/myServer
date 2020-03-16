@@ -66,9 +66,24 @@ namespace myServer.DataMgr
             if (!IsSafeStr(id) || !IsSafeStr(pw))
             {
                 Console.WriteLine("[DataMgr]Register: 使用非法字符");
+                return false;
             }
-
-            return false;
+            //能否注册
+            if (!CanRegister(id)) {
+                Console.WriteLine("[DataMgr]Register!CanRegister");
+                return false;
+            }
+            //写入数据库User表
+            string cmdStr = string.Format("insert into user set id = '{0}' , pw='{1}';",id,pw);
+            NpgsqlCommand cmd = new NpgsqlCommand(cmdStr);
+            try {
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e) {
+                Console.WriteLine("[DataMgr]Register" + e.Message);
+                return false;
+            }
         }
 
         public bool IsSafeStr(string str)    //判定安全字符
