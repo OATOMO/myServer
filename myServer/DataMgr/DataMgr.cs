@@ -1,14 +1,18 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using MySql.Data.MySqlClient;
 using Npgsql;
+using NpgsqlTypes;
 using Org.BouncyCastle.Crypto.Tls;
 
 namespace myServer.DataMgr
 {
     public class DataMgr
     {
-        private MySqlConnection mysqlConn;
+        // private MySqlConnection mysqlConn;
         private NpgsqlConnection PGConn;
         //单例模式
         public static DataMgr instance;//构造函数实现单例和连接
@@ -22,8 +26,8 @@ namespace myServer.DataMgr
         public void ConnectPG()
         {
             //数据库
-            string connStr = "Host=localhost;Port=5432;Username=unityServer;Password=5432;Database=game";
-            var PGConn = new NpgsqlConnection(connStr);
+            string connStr = "Host=localhost;Port=5432;Username=unityServer;Password=123456;Database=game";
+            PGConn = new NpgsqlConnection(connStr);
             try
             {
                 PGConn.Open();
@@ -43,7 +47,7 @@ namespace myServer.DataMgr
             if (!IsSafeStr(id))
                 return false;
             //查询id是否存在
-            string cmdStr = string.Format("select * from user where id='{0}';",id);
+            string cmdStr = string.Format("select * from b_user where id='{0}';",id);
             NpgsqlCommand cmd = new NpgsqlCommand(cmdStr,PGConn);
             try
             {
@@ -74,14 +78,16 @@ namespace myServer.DataMgr
                 return false;
             }
             //写入数据库User表
-            string cmdStr = string.Format("insert into user set id = '{0}' , pw='{1}';",id,pw);
-            NpgsqlCommand cmd = new NpgsqlCommand(cmdStr);
+            string cmdStr = string.Format("insert into b_user (id,pw) values (@id,@pw);");
+            NpgsqlCommand cmd = new NpgsqlCommand(cmdStr,PGConn);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@pw", pw);
             try {
                 cmd.ExecuteNonQuery();
                 return true;
             }
             catch (Exception e) {
-                Console.WriteLine("[DataMgr]Register" + e.Message);
+                Console.WriteLine("[DataMgr]Register : " + e.Message);
                 return false;
             }
         }
@@ -91,7 +97,69 @@ namespace myServer.DataMgr
             //防SQL注入
             if (!IsSafeStr(id))
                 return false;
+            //序列化
+            IFormatter formatter = new BinaryFormatter();
+            MemoryStream stream = new MemoryStream();
+            PlayerData playerData = new PlayerData();
+            try
+            {
+                formatter.Serialize(stream,playerData);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("[DataMgr]CreatePlayer 序列化 : "+e.Message);
+                return false;
+            }
+            byte[] byteArr = stream.ToArray();
+            //写入数据库
+            string cmdStr = string.Format("insert into player set id='{0}',data=@data;",id);
+            NpgsqlCommand cmd = new NpgsqlCommand(cmdStr,PGConn);
+            cmd.Parameters.Add("@data", NpgsqlDbType.Boolean);
+            cmd.Parameters[0].Value = byteArr;
+            try
+            {
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("[DataMgr]Create 写入 : " + e.Message);
+                return false;
+            }
+
         }
+
+        //检查用户名和密码
+        public bool CheckPassword(string id,string pw)
+        {
+            //防止sql注入
+            if (!IsSafeStr(id) || !IsSafeStr(pw))
+                return false;
+            //查询
+            string cmdStr = string.Format("select * from user where id='{0}' and pw='{1}';",id,pw);
+            NpgsqlCommand cmd = new NpgsqlCommand(cmdStr,PGConn);
+            try
+            {
+                NpgsqlDataReader dataReader = cmd.ExecuteReader();
+                bool hasRows = dataReader.HasRows;
+                dataReader.Close();
+                return hasRows;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("[DataMgr]CheckPassword : " + e.Message);
+                return false;
+            }
+        }
+        //todo:获取玩家数据
+        // public PlayerData GetPlayerData(string id)
+        // {
+        // }
+        
+        //todo:保存玩家数据
+        // public bool SavePlayerData(Player player)
+        // {
+        // }
 
         public bool IsSafeStr(string str)    //判定安全字符
         {
