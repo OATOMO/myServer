@@ -43,7 +43,7 @@ namespace myServer.DataMgr
             if (!IsSafeStr(id))
                 return false;
             //查询id是否存在
-            string cmdStr = string.Format("seleect * from user where id='{0}';",id);
+            string cmdStr = string.Format("select * from user where id='{0}';",id);
             NpgsqlCommand cmd = new NpgsqlCommand(cmdStr,PGConn);
             try
             {
@@ -84,6 +84,13 @@ namespace myServer.DataMgr
                 Console.WriteLine("[DataMgr]Register" + e.Message);
                 return false;
             }
+        }
+        //创建角色
+        public bool CreatePlayer(string id)
+        {
+            //防SQL注入
+            if (!IsSafeStr(id))
+                return false;
         }
 
         public bool IsSafeStr(string str)    //判定安全字符
