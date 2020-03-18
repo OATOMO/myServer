@@ -5,6 +5,9 @@ using System.Net;
 using System.Net.Sockets;
 using System.Net.WebSockets;
 using System.Text;
+using System.Timers;
+using Org.BouncyCastle.Crypto.Tls;
+using Org.BouncyCastle.Utilities;
 using Org.BouncyCastle.Utilities.Net;
 using IPAddress = System.Net.IPAddress;
 
@@ -20,7 +23,12 @@ namespace myServer.ServNet
 
         //最大连接数
         public int _maxConn = 50;
-
+        
+        //主定时器
+        System.Timers.Timer _timer = new Timer(1000);
+        //心跳时间
+        public long heartBeatTime = 180;
+        
         //单例 (只是为了方便调用)
         public static ServNet _instance;
 
@@ -52,6 +60,10 @@ namespace myServer.ServNet
         //开启服务器
         public void Start(string host, int port)
         {
+            //定时器
+            _timer.Elapsed += new ElapsedEventHandler(HandleMainTimer);
+            _timer.AutoReset = false;
+            _timer.Enabled = true;
             //连接池
             _conns = new Conn[_maxConn];
             for (int i = 0; i < _maxConn; i++)
@@ -71,6 +83,29 @@ namespace myServer.ServNet
             Console.WriteLine("[服务器]启动成功");
 
 
+        }
+
+        //主定时器
+        public void HandleMainTimer(object sender,System.Timers.ElapsedEventArgs e) {
+            //处理心跳
+            HeartBeat();
+            _timer.Start();
+        }
+        //心跳
+        public void HeartBeat() {
+            Console.WriteLine("[主定时器执行]");
+            long timeNow = Sys.GetTimeStamp();
+            for (int i = 0; i < _conns.Length; i++) {
+                Conn conn = _conns[i];
+                if (conn == null) continue;
+                if (!conn.IsUse) continue;
+                if (conn._lastTickTime < timeNow - heartBeatTime) {
+                    Console.WriteLine("[心跳引起断开连接]" + conn.GetAdress());
+                    lock (conn) {
+                        conn.Close();    
+                    }
+                }
+            }
         }
 
         //Accept回调
@@ -166,6 +201,8 @@ namespace myServer.ServNet
             //处理消息
             string str = System.Text.Encoding.UTF8.GetString(
                                 conn._readBuffer, sizeof(Int32), conn._msgLenth);
+            if (str == "atom")
+                conn._lastTickTime = Sys.GetTimeStamp();
             Console.WriteLine("收到消息 : ["+ conn.GetAdress() + "]" + str);
             Send(conn, str);
             //清除已处理的消息

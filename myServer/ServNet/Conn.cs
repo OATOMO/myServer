@@ -35,7 +35,7 @@ namespace myServer.ServNet
             IsUse = true;
             _bufferCount = 0;
             //心跳处理
-            // _lastTickTime = Sys.GetTimeStamp();
+            _lastTickTime = Sys.GetTimeStamp();
         }
         //剩余的buffer
         public int BufferRemain()
