@@ -117,6 +117,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServNet\Conn.cs" />
     <Compile Include="ServNet\ServNet.cs" />
+    <Compile Include="test_client\client.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
