@@ -118,6 +118,8 @@
     <Compile Include="ServNet\Conn.cs" />
     <Compile Include="ServNet\Protocol\ProtocolBase.cs" />
     <Compile Include="ServNet\Protocol\ProtocolBytes.cs" />
+    <Compile Include="ServNet\Protocol\ProtocolJson.cs" />
+    <Compile Include="ServNet\Protocol\ProtocolPbprotobuf.cs" />
     <Compile Include="ServNet\Protocol\ProtocolStr.cs" />
     <Compile Include="ServNet\ServNet.cs" />
     <Compile Include="ServNet\Sys.cs" />
