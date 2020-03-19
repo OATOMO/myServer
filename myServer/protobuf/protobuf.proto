@@ -1,0 +1,15 @@
+syntax = "proto3";
+package  protoc;
+message sHandleConnMsg{
+    string query = 1;
+//  required: 必须出现一次 optional: 不超过一次
+}
+
+message sHandlePlayerEvent{
+    string query = 1;
+}
+
+message sHandlePlayerMsg{
+    string query = 1;
+}
+//protoc protobuf.proto --csharp_out=./

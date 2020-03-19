@@ -252,13 +252,13 @@ namespace ServNet
                 mm.Invoke(HandlePlayerMsg,obj);
             }
 
-            //处理心跳
-            if (name == "HeatBeat"){
-                Console.WriteLine("[更新心跳时间] : " + conn.GetAdress());
-                conn._lastTickTime = Sys.GetTimeStamp();
-            }
-            //回射
-            Send(conn,protocolBase);
+            // //处理心跳
+            // if (name == "HeatBeat"){
+            //     Console.WriteLine("[更新心跳时间] : " + conn.GetAdress());
+            //     conn._lastTickTime = Sys.GetTimeStamp();
+            // }
+            // //回射
+            // Send(conn,protocolBase);
         }
 
         //发送
