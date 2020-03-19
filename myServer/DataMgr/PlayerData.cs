@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace myServer.DataMgr
+namespace DataMgr
 {
     [Serializable] //序列化数据
     public class PlayerData

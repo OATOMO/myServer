@@ -3,12 +3,13 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
+using DataMgr;
 using MySql.Data.MySqlClient;
 using Npgsql;
 using NpgsqlTypes;
 using Org.BouncyCastle.Crypto.Tls;
 
-namespace myServer.DataMgr
+namespace DataMgr
 {
     public class DataMgr
     {
@@ -152,14 +153,14 @@ namespace myServer.DataMgr
             }
         }
         //todo:获取玩家数据
-        // public PlayerData GetPlayerData(string id)
-        // {
-        // }
+        public PlayerData GetPlayerData(string id) {
+            return new PlayerData();
+        }
         
         //todo:保存玩家数据
-        // public bool SavePlayerData(Player player)
-        // {
-        // }
+        public bool SavePlayerData(Player player) {
+            return false;
+        }
 
         public bool IsSafeStr(string str)    //判定安全字符
         {

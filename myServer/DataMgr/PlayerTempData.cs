@@ -1,4 +1,4 @@
-﻿namespace myServer.DataMgr
+﻿namespace DataMgr
 {
     public class PlayerTempData
     {

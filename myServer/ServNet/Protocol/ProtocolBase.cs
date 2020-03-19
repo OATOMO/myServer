@@ -1,4 +1,4 @@
-namespace myServer.ServNet{
+namespace ServNet{
     //协议基类
     public class ProtocolBase{
         //解码器，解码readbuff中从strat开始的length字节

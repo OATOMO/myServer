@@ -1,4 +1,4 @@
-namespace myServer.ServNet{
+namespace ServNet{
     public class ProtocolPbprotobuf{
         
     }

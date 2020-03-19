@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Text;
 
-namespace myServer.ServNet{
+namespace ServNet{
     //字节流协议类型
     public class ProtocolBytes: ProtocolBase{
         //传输的字节流
@@ -65,6 +65,62 @@ namespace myServer.ServNet{
         public string GetString(int start) {
             int end = 0;
             return GetString(start, ref end);
+        }
+
+        public void AddInt(int num) {
+            byte[] numByte = BitConverter.GetBytes(num);
+            if (bytes == null){
+                bytes = numByte;
+            }
+            else{
+                bytes = bytes.Concat(numByte).ToArray();
+            }
+        }
+
+        public int GetInt(int start,ref int end) {
+            if (bytes == null){
+                return 0;
+            }
+
+            if (bytes.Length < start + sizeof(Int32)){
+                return 0;
+            }
+
+            end = start + sizeof(Int32);
+            return BitConverter.ToInt32(bytes, start);
+        }
+
+        public int GetInt(int start) {
+            int end = 0;
+            return GetInt(start, ref end);
+        }
+        
+        public void AddFloat(float num) {
+            byte[] numByte = BitConverter.GetBytes(num);
+            if (bytes == null){
+                bytes = numByte;
+            }
+            else{
+                bytes = bytes.Concat(numByte).ToArray();
+            }
+        }
+
+        public float GetFloat(int start,ref int end) {
+            if (bytes == null){
+                return 0;
+            }
+
+            if (bytes.Length < start + sizeof(float)){
+                return 0;
+            }
+
+            end = start + sizeof(float);
+            return BitConverter.ToInt32(bytes, start);
+        }
+
+        public float GetFloat(int start) {
+            int end = 0;
+            return GetInt(start, ref end);
         }
     }
 }

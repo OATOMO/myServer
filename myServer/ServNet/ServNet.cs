@@ -4,14 +4,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Net.WebSockets;
+using System.Reflection;
 using System.Text;
 using System.Timers;
+using handleMsg;
 using Org.BouncyCastle.Crypto.Tls;
 using Org.BouncyCastle.Utilities;
 using Org.BouncyCastle.Utilities.Net;
 using IPAddress = System.Net.IPAddress;
+using ServNet;
 
-namespace myServer.ServNet
+namespace ServNet
 {
     public class ServNet
     {
@@ -28,7 +31,12 @@ namespace myServer.ServNet
         System.Timers.Timer _timer = new Timer(1000);
         //心跳时间
         public long heartBeatTime = 180;
-        
+        //使用的协议
+        public ProtocolBase proto;
+        //消息分发
+        public HandleConnMsg HandleConnMsg = new HandleConnMsg();            //处理连接
+        public HandlePlayerMsg HandlePlayerMsg = new HandlePlayerMsg();      //处理角色
+        public HandlePlayerEvent HandlePlayerEvent = new HandlePlayerEvent();//处理玩家
         //单例 (只是为了方便调用)
         public static ServNet _instance;
 
@@ -199,12 +207,14 @@ namespace myServer.ServNet
                 return;
             }
             //处理消息
-            string str = System.Text.Encoding.UTF8.GetString(
-                                conn._readBuffer, sizeof(Int32), conn._msgLenth);
-            if (str == "atom")
-                conn._lastTickTime = Sys.GetTimeStamp();
-            Console.WriteLine("收到消息 : ["+ conn.GetAdress() + "]" + str);
-            Send(conn, str);
+            // string str = System.Text.Encoding.UTF8.GetString(
+            //                     conn._readBuffer, sizeof(Int32), conn._msgLenth);
+            // if (str == "atom")
+            //     conn._lastTickTime = Sys.GetTimeStamp();
+            // Console.WriteLine("收到消息 : ["+ conn.GetAdress() + "]" + str);
+            // Send(conn, str);
+            ProtocolBase protocol = proto.Decode(conn._readBuffer, sizeof(Int32), conn._msgLenth);
+            HandleMsg(conn,protocol);
             //清除已处理的消息
             int count = conn._bufferCount - conn._msgLenth - sizeof(Int32);
             Array.Copy(conn._readBuffer,sizeof(Int32)+conn._msgLenth,conn._readBuffer,0,count);
@@ -214,6 +224,43 @@ namespace myServer.ServNet
                 ProcessData(conn);
             }
         }
+        //
+        private void HandleMsg(Conn conn,ProtocolBase protocolBase) {
+            string name = protocolBase.GetName();
+            string methodName = "Msg" + name;
+            // Console.WriteLine("[收到协议] : " + name);
+            //连接协议分发
+            if (conn._player == null || name == "HeatBeat" || name == "Logout"){
+                MethodInfo mm = HandleConnMsg.GetType().GetMethod(methodName);
+                if (mm == null){
+                    Console.WriteLine("[warning]HandleConnMsg 没有处理连接方法: " + methodName);
+                    return;
+                }
+                Object[] obj = new object[]{conn,protocolBase};
+                Console.WriteLine("[处理连接消息]"+conn.GetAdress()+":"+name);
+                mm.Invoke(HandleConnMsg,obj);
+            }
+            //角色协议分发
+            else{
+                MethodInfo mm = HandlePlayerMsg.GetType().GetMethod(methodName);
+                if (mm == null){
+                    Console.WriteLine("[warning]HandlePlayerMsg 没有处理连接方法: " + methodName);
+                    return;
+                }
+                Object[] obj = new object[]{conn._player,protocolBase};
+                Console.WriteLine("[处理玩家消息]"+conn._player.id+":"+name);
+                mm.Invoke(HandlePlayerMsg,obj);
+            }
+
+            //处理心跳
+            if (name == "HeatBeat"){
+                Console.WriteLine("[更新心跳时间] : " + conn.GetAdress());
+                conn._lastTickTime = Sys.GetTimeStamp();
+            }
+            //回射
+            Send(conn,protocolBase);
+        }
+
         //发送
         public void Send(Conn conn,string str)
         {
@@ -227,6 +274,27 @@ namespace myServer.ServNet
             catch (Exception e)
             {
                 Console.WriteLine("[发送消息] " + conn.GetAdress() + ":" + e.Message);
+            }
+        }
+        public void Send(Conn conn,ProtocolBase protocolBase) {
+            byte[] bytes = protocolBase.Encode();
+            byte[] length = BitConverter.GetBytes(bytes.Length);
+            byte[] sendbuff = length.Concat(bytes).ToArray();
+            try
+            {
+                conn._socket.BeginSend(sendbuff,0,sendbuff.Length,SocketFlags.None,null,null);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("[发送消息] " + conn.GetAdress() + ":" + e.Message);
+            }
+        }
+        //广播
+        public void Broadcast(ProtocolBase protocolBase) {
+            for (int i = 0; i < _conns.Length; i++){
+                if (!_conns[i].IsUse) continue;
+                if (_conns[i]._player == null) continue;
+                Send(_conns[i],protocolBase);
             }
         }
 

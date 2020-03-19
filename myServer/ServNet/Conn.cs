@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Net.Sockets;
-using myServer.DataMgr;
+using DataMgr;
 using MySqlX.Protocol;
 
-namespace myServer.ServNet
+namespace ServNet
 {
     public class Conn
     {
@@ -66,9 +66,9 @@ namespace myServer.ServNet
             IsUse = false;
         }
         //发送协议,稍后实现
-        // public void Send(ProtocolBase protocol)
-        // {
-        //     ServNet._instance.Send(this,protocol);
-        // }
+        public void Send(ProtocolBase protocol)
+        {
+            ServNet._instance.Send(this,protocol);
+        }
     }
 }

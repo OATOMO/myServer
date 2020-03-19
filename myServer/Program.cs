@@ -1,5 +1,6 @@
 ﻿using System;
-using myServer.test_client;
+using ServNet;
+using test_client;
 
 namespace myServer
 {
@@ -13,17 +14,25 @@ namespace myServer
         public static void test_servNet_1()
         {
             ServNet.ServNet servNet = new ServNet.ServNet();
+            servNet.proto = new ProtocolBytes();
             servNet.Start("127.0.0.1",6666);
             Console.ReadLine();
         }
 
         public static void test_client_1()
         {
-            myServer.test_client.client client = new client();
+            test_client.client client = new client();
             client.Connection();
-            Console.ReadKey();
-            client.Send("atom");
-            Console.ReadKey();
+            // Console.ReadKey();
+            // client.Send("atom");
+            // Console.ReadKey();
+            while (true){
+                Console.ReadKey();
+                ProtocolBytes protocol = new ProtocolBytes();
+                protocol.AddString("HeatBeat");
+                client.Send(protocol);
+            }
+            
         }
 
         public static void test_dataMgr_1()

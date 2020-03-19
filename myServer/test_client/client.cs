@@ -5,14 +5,16 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using Google.Protobuf.WellKnownTypes;
+using ServNet;
 
-namespace myServer.test_client
+namespace test_client
 {
     public class client
     {
         public Socket _socket;
         public const int BUFFER_SIZE = 1024;
-        public byte[] readBuff = new byte[BUFFER_SIZE]; 
+        public byte[] readBuff = new byte[BUFFER_SIZE];
+        public ProtocolBase proto = new ProtocolBytes();
         public void Connection()
         {
             //socket
@@ -21,7 +23,7 @@ namespace myServer.test_client
             string host = "127.0.0.1";
             int port = 6666;
             _socket.Connect(host,port);
-            // _socket.BeginReceive(readBuff,0,BUFFER_SIZE,SocketFlags.None,ReceiveCb,null);
+            _socket.BeginReceive(readBuff,0,BUFFER_SIZE,SocketFlags.None,ReceiveCb,null);
         }
 
         private void ReceiveCb(IAsyncResult ar)
@@ -31,8 +33,8 @@ namespace myServer.test_client
                 //count
                 int count = _socket.EndReceive(ar);
                 //数据处理
-                string str = Encoding.UTF8.GetString(readBuff, 0, count);
-                Console.WriteLine(str);
+                // string str = Encoding.UTF8.GetString(readBuff, 0, count);
+                // Console.WriteLine(str);
                 _socket.BeginReceive(readBuff,0,BUFFER_SIZE,SocketFlags.None,ReceiveCb,null);
                 
             }
@@ -46,6 +48,13 @@ namespace myServer.test_client
         public void Send(string str)
         {
             byte[] bytes = Encoding.UTF8.GetBytes(str);
+            byte[] length = BitConverter.GetBytes(bytes.Length);
+            byte[] sendBuff = length.Concat(bytes).ToArray();
+            _socket.Send(sendBuff);
+            Console.WriteLine("send ok!");
+        }
+        public void Send(ProtocolBase protocolBase) {
+            byte[] bytes = protocolBase.Encode();
             byte[] length = BitConverter.GetBytes(bytes.Length);
             byte[] sendBuff = length.Concat(bytes).ToArray();
             _socket.Send(sendBuff);

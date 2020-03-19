@@ -1,6 +1,6 @@
 using System;
 
-namespace myServer.ServNet{
+namespace ServNet{
     public class Sys{
         public static long GetTimeStamp() {
             TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1,

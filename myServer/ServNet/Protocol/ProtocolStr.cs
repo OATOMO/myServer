@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace myServer.ServNet{
+namespace ServNet{
     //字符串协议模型
     //形式 名称,参数1,参数2，...
     public class ProtocolStr: ProtocolBase{
