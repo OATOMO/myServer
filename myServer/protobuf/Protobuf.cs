@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Protoc {
+namespace Google.Protobuf.WellKnownTypes {
 
   /// <summary>Holder for reflection information generated from protobuf.proto</summary>
   public static partial class ProtobufReflection {
@@ -24,31 +24,46 @@ namespace Protoc {
     static ProtobufReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5wcm90b2J1Zi5wcm90bxIGcHJvdG9jIh8KDnNIYW5kbGVDb25uTXNnEg0K",
-            "BXF1ZXJ5GAEgASgJIiMKEnNIYW5kbGVQbGF5ZXJFdmVudBINCgVxdWVyeRgB",
-            "IAEoCSIhChBzSGFuZGxlUGxheWVyTXNnEg0KBXF1ZXJ5GAEgASgJYgZwcm90",
-            "bzM="));
+            "Cg5wcm90b2J1Zi5wcm90bxIPZ29vZ2xlLnByb3RvYnVmIowBCgNNc2cSDQoF",
+            "cXVlcnkYASABKAkSJgoEdHlwZRgCIAEoDjIYLmdvb2dsZS5wcm90b2J1Zi5N",
+            "c2dUeXBlEicKBnJlc3BvbhgDIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5SZXNw",
+            "b24SJQoFbG9naW4YBCABKAsyFi5nb29nbGUucHJvdG9idWYuTG9naW4iMgoG",
+            "UmVzcG9uEgwKBGNvZGUYASABKAUSCwoDbXNnGAIgASgJEg0KBXZhbHVlGAMg",
+            "ASgFIh8KBUxvZ2luEgoKAmlkGAEgASgJEgoKAnB3GAIgASgJIiYKA1BvcxIJ",
+            "CgF4GAEgASgCEgkKAXkYAiABKAISCQoBehgDIAEoAio2CgdNc2dUeXBlEgsK",
+            "B2Nvbm5Nc2cQABIPCgtwbGF5ZXJFdmVudBABEg0KCXBsYXllck1zZxACQiGq",
+            "Ah5Hb29nbGUuUHJvdG9idWYuV2VsbEtub3duVHlwZXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protoc.sHandleConnMsg), global::Protoc.sHandleConnMsg.Parser, new[]{ "Query" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protoc.sHandlePlayerEvent), global::Protoc.sHandlePlayerEvent.Parser, new[]{ "Query" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protoc.sHandlePlayerMsg), global::Protoc.sHandlePlayerMsg.Parser, new[]{ "Query" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.WellKnownTypes.MsgType), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Msg), global::Google.Protobuf.WellKnownTypes.Msg.Parser, new[]{ "Query", "Type", "Respon", "Login" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Respon), global::Google.Protobuf.WellKnownTypes.Respon.Parser, new[]{ "Code", "Msg", "Value" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Login), global::Google.Protobuf.WellKnownTypes.Login.Parser, new[]{ "Id", "Pw" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Pos), global::Google.Protobuf.WellKnownTypes.Pos.Parser, new[]{ "X", "Y", "Z" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
+  #region Enums
+  public enum MsgType {
+    [pbr::OriginalName("connMsg")] ConnMsg = 0,
+    [pbr::OriginalName("playerEvent")] PlayerEvent = 1,
+    [pbr::OriginalName("playerMsg")] PlayerMsg = 2,
+  }
+
+  #endregion
+
   #region Messages
-  public sealed partial class sHandleConnMsg : pb::IMessage<sHandleConnMsg> {
-    private static readonly pb::MessageParser<sHandleConnMsg> _parser = new pb::MessageParser<sHandleConnMsg>(() => new sHandleConnMsg());
+  public sealed partial class Msg : pb::IMessage<Msg> {
+    private static readonly pb::MessageParser<Msg> _parser = new pb::MessageParser<Msg>(() => new Msg());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<sHandleConnMsg> Parser { get { return _parser; } }
+    public static pb::MessageParser<Msg> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Protoc.ProtobufReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -57,28 +72,31 @@ namespace Protoc {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public sHandleConnMsg() {
+    public Msg() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public sHandleConnMsg(sHandleConnMsg other) : this() {
+    public Msg(Msg other) : this() {
       query_ = other.query_;
+      type_ = other.type_;
+      respon_ = other.respon_ != null ? other.respon_.Clone() : null;
+      login_ = other.login_ != null ? other.login_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public sHandleConnMsg Clone() {
-      return new sHandleConnMsg(this);
+    public Msg Clone() {
+      return new Msg(this);
     }
 
     /// <summary>Field number for the "query" field.</summary>
     public const int QueryFieldNumber = 1;
     private string query_ = "";
     /// <summary>
-    ///  required: 必须出现一次 optional: 不超过一次
+    ///请求名字
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Query {
@@ -88,13 +106,55 @@ namespace Protoc {
       }
     }
 
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 2;
+    private global::Google.Protobuf.WellKnownTypes.MsgType type_ = global::Google.Protobuf.WellKnownTypes.MsgType.ConnMsg;
+    /// <summary>
+    ///请求类型,消息分发
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as sHandleConnMsg);
+    public global::Google.Protobuf.WellKnownTypes.MsgType Type {
+      get { return type_; }
+      set {
+        type_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "respon" field.</summary>
+    public const int ResponFieldNumber = 3;
+    private global::Google.Protobuf.WellKnownTypes.Respon respon_;
+    /// <summary>
+    ///服务器响应状态
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.WellKnownTypes.Respon Respon {
+      get { return respon_; }
+      set {
+        respon_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "login" field.</summary>
+    public const int LoginFieldNumber = 4;
+    private global::Google.Protobuf.WellKnownTypes.Login login_;
+    /// <summary>
+    ///登录用的信息
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.WellKnownTypes.Login Login {
+      get { return login_; }
+      set {
+        login_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(sHandleConnMsg other) {
+    public override bool Equals(object other) {
+      return Equals(other as Msg);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Msg other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -102,6 +162,9 @@ namespace Protoc {
         return true;
       }
       if (Query != other.Query) return false;
+      if (Type != other.Type) return false;
+      if (!object.Equals(Respon, other.Respon)) return false;
+      if (!object.Equals(Login, other.Login)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -109,6 +172,9 @@ namespace Protoc {
     public override int GetHashCode() {
       int hash = 1;
       if (Query.Length != 0) hash ^= Query.GetHashCode();
+      if (Type != global::Google.Protobuf.WellKnownTypes.MsgType.ConnMsg) hash ^= Type.GetHashCode();
+      if (respon_ != null) hash ^= Respon.GetHashCode();
+      if (login_ != null) hash ^= Login.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -126,6 +192,18 @@ namespace Protoc {
         output.WriteRawTag(10);
         output.WriteString(Query);
       }
+      if (Type != global::Google.Protobuf.WellKnownTypes.MsgType.ConnMsg) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Type);
+      }
+      if (respon_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Respon);
+      }
+      if (login_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Login);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -137,6 +215,15 @@ namespace Protoc {
       if (Query.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Query);
       }
+      if (Type != global::Google.Protobuf.WellKnownTypes.MsgType.ConnMsg) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
+      }
+      if (respon_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Respon);
+      }
+      if (login_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Login);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -144,12 +231,27 @@ namespace Protoc {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(sHandleConnMsg other) {
+    public void MergeFrom(Msg other) {
       if (other == null) {
         return;
       }
       if (other.Query.Length != 0) {
         Query = other.Query;
+      }
+      if (other.Type != global::Google.Protobuf.WellKnownTypes.MsgType.ConnMsg) {
+        Type = other.Type;
+      }
+      if (other.respon_ != null) {
+        if (respon_ == null) {
+          Respon = new global::Google.Protobuf.WellKnownTypes.Respon();
+        }
+        Respon.MergeFrom(other.Respon);
+      }
+      if (other.login_ != null) {
+        if (login_ == null) {
+          Login = new global::Google.Protobuf.WellKnownTypes.Login();
+        }
+        Login.MergeFrom(other.Login);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -166,133 +268,22 @@ namespace Protoc {
             Query = input.ReadString();
             break;
           }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class sHandlePlayerEvent : pb::IMessage<sHandlePlayerEvent> {
-    private static readonly pb::MessageParser<sHandlePlayerEvent> _parser = new pb::MessageParser<sHandlePlayerEvent>(() => new sHandlePlayerEvent());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<sHandlePlayerEvent> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Protoc.ProtobufReflection.Descriptor.MessageTypes[1]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public sHandlePlayerEvent() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public sHandlePlayerEvent(sHandlePlayerEvent other) : this() {
-      query_ = other.query_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public sHandlePlayerEvent Clone() {
-      return new sHandlePlayerEvent(this);
-    }
-
-    /// <summary>Field number for the "query" field.</summary>
-    public const int QueryFieldNumber = 1;
-    private string query_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Query {
-      get { return query_; }
-      set {
-        query_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as sHandlePlayerEvent);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(sHandlePlayerEvent other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Query != other.Query) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Query.Length != 0) hash ^= Query.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Query.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Query);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Query.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Query);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(sHandlePlayerEvent other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Query.Length != 0) {
-        Query = other.Query;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          case 16: {
+            Type = (global::Google.Protobuf.WellKnownTypes.MsgType) input.ReadEnum();
             break;
-          case 10: {
-            Query = input.ReadString();
+          }
+          case 26: {
+            if (respon_ == null) {
+              Respon = new global::Google.Protobuf.WellKnownTypes.Respon();
+            }
+            input.ReadMessage(Respon);
+            break;
+          }
+          case 34: {
+            if (login_ == null) {
+              Login = new global::Google.Protobuf.WellKnownTypes.Login();
+            }
+            input.ReadMessage(Login);
             break;
           }
         }
@@ -301,15 +292,15 @@ namespace Protoc {
 
   }
 
-  public sealed partial class sHandlePlayerMsg : pb::IMessage<sHandlePlayerMsg> {
-    private static readonly pb::MessageParser<sHandlePlayerMsg> _parser = new pb::MessageParser<sHandlePlayerMsg>(() => new sHandlePlayerMsg());
+  public sealed partial class Respon : pb::IMessage<Respon> {
+    private static readonly pb::MessageParser<Respon> _parser = new pb::MessageParser<Respon>(() => new Respon());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<sHandlePlayerMsg> Parser { get { return _parser; } }
+    public static pb::MessageParser<Respon> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Protoc.ProtobufReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -318,55 +309,83 @@ namespace Protoc {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public sHandlePlayerMsg() {
+    public Respon() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public sHandlePlayerMsg(sHandlePlayerMsg other) : this() {
-      query_ = other.query_;
+    public Respon(Respon other) : this() {
+      code_ = other.code_;
+      msg_ = other.msg_;
+      value_ = other.value_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public sHandlePlayerMsg Clone() {
-      return new sHandlePlayerMsg(this);
+    public Respon Clone() {
+      return new Respon(this);
     }
 
-    /// <summary>Field number for the "query" field.</summary>
-    public const int QueryFieldNumber = 1;
-    private string query_ = "";
+    /// <summary>Field number for the "code" field.</summary>
+    public const int CodeFieldNumber = 1;
+    private int code_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Query {
-      get { return query_; }
+    public int Code {
+      get { return code_; }
       set {
-        query_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        code_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "msg" field.</summary>
+    public const int MsgFieldNumber = 2;
+    private string msg_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Msg {
+      get { return msg_; }
+      set {
+        msg_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "value" field.</summary>
+    public const int ValueFieldNumber = 3;
+    private int value_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Value {
+      get { return value_; }
+      set {
+        value_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as sHandlePlayerMsg);
+      return Equals(other as Respon);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(sHandlePlayerMsg other) {
+    public bool Equals(Respon other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Query != other.Query) return false;
+      if (Code != other.Code) return false;
+      if (Msg != other.Msg) return false;
+      if (Value != other.Value) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Query.Length != 0) hash ^= Query.GetHashCode();
+      if (Code != 0) hash ^= Code.GetHashCode();
+      if (Msg.Length != 0) hash ^= Msg.GetHashCode();
+      if (Value != 0) hash ^= Value.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -380,9 +399,17 @@ namespace Protoc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Query.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Query);
+      if (Code != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Code);
+      }
+      if (Msg.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Msg);
+      }
+      if (Value != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Value);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -392,8 +419,14 @@ namespace Protoc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Query.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Query);
+      if (Code != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Code);
+      }
+      if (Msg.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Msg);
+      }
+      if (Value != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Value);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -402,12 +435,179 @@ namespace Protoc {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(sHandlePlayerMsg other) {
+    public void MergeFrom(Respon other) {
       if (other == null) {
         return;
       }
-      if (other.Query.Length != 0) {
-        Query = other.Query;
+      if (other.Code != 0) {
+        Code = other.Code;
+      }
+      if (other.Msg.Length != 0) {
+        Msg = other.Msg;
+      }
+      if (other.Value != 0) {
+        Value = other.Value;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Code = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Msg = input.ReadString();
+            break;
+          }
+          case 24: {
+            Value = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Login : pb::IMessage<Login> {
+    private static readonly pb::MessageParser<Login> _parser = new pb::MessageParser<Login>(() => new Login());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Login> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Login() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Login(Login other) : this() {
+      id_ = other.id_;
+      pw_ = other.pw_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Login Clone() {
+      return new Login(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private string id_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "pw" field.</summary>
+    public const int PwFieldNumber = 2;
+    private string pw_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Pw {
+      get { return pw_; }
+      set {
+        pw_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Login);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Login other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Pw != other.Pw) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (Pw.Length != 0) hash ^= Pw.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (Pw.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Pw);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (Pw.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Pw);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Login other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      if (other.Pw.Length != 0) {
+        Pw = other.Pw;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -421,7 +621,196 @@ namespace Protoc {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Query = input.ReadString();
+            Id = input.ReadString();
+            break;
+          }
+          case 18: {
+            Pw = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Pos : pb::IMessage<Pos> {
+    private static readonly pb::MessageParser<Pos> _parser = new pb::MessageParser<Pos>(() => new Pos());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Pos> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Pos() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Pos(Pos other) : this() {
+      x_ = other.x_;
+      y_ = other.y_;
+      z_ = other.z_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Pos Clone() {
+      return new Pos(this);
+    }
+
+    /// <summary>Field number for the "x" field.</summary>
+    public const int XFieldNumber = 1;
+    private float x_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float X {
+      get { return x_; }
+      set {
+        x_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "y" field.</summary>
+    public const int YFieldNumber = 2;
+    private float y_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float Y {
+      get { return y_; }
+      set {
+        y_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "z" field.</summary>
+    public const int ZFieldNumber = 3;
+    private float z_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float Z {
+      get { return z_; }
+      set {
+        z_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Pos);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Pos other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(X, other.X)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Y, other.Y)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Z, other.Z)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (X != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(X);
+      if (Y != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Y);
+      if (Z != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Z);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (X != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(X);
+      }
+      if (Y != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Y);
+      }
+      if (Z != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(Z);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (X != 0F) {
+        size += 1 + 4;
+      }
+      if (Y != 0F) {
+        size += 1 + 4;
+      }
+      if (Z != 0F) {
+        size += 1 + 4;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Pos other) {
+      if (other == null) {
+        return;
+      }
+      if (other.X != 0F) {
+        X = other.X;
+      }
+      if (other.Y != 0F) {
+        Y = other.Y;
+      }
+      if (other.Z != 0F) {
+        Z = other.Z;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 13: {
+            X = input.ReadFloat();
+            break;
+          }
+          case 21: {
+            Y = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            Z = input.ReadFloat();
             break;
           }
         }

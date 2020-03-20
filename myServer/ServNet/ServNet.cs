@@ -297,6 +297,17 @@ namespace ServNet
                 Send(_conns[i],protocolBase);
             }
         }
+        //输出服务端信息
+        public void Print() {
+            Console.WriteLine("==========服务器登录信息==========");
+            for (int i = 0; i < _conns.Length; i++){
+                if (_conns[i] == null) continue;
+                if (!_conns[i].IsUse) continue;
+                string str = "连接 [" + _conns[i].GetAdress()+"]";
+                if (_conns[i]._player != null)
+                    Console.WriteLine(str + "play Id:" + _conns[i]._player.id);
+            }
+        }
 
     }
 }

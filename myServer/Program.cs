@@ -14,22 +14,22 @@ namespace myServer
         public static void test_servNet_1()
         {
             ServNet.ServNet servNet = new ServNet.ServNet();
-            servNet.proto = new ProtocolBytes();
+            servNet.proto = new ProtocolPbprotobuf();
             servNet.Start("127.0.0.1",6666);
             Console.ReadLine();
         }
 
         public static void test_client_1()
         {
-            test_client.client client = new client();
+            test_client.test_client client = new test_client.test_client();
             client.Connection();
             // Console.ReadKey();
             // client.Send("atom");
             // Console.ReadKey();
             while (true){
                 Console.ReadKey();
-                ProtocolBytes protocol = new ProtocolBytes();
-                protocol.AddString("HeatBeat");
+                ProtocolPbprotobuf protocol = new ProtocolPbprotobuf();
+                protocol.buf.Query = "HeatBeat";
                 client.Send(protocol);
             }
             

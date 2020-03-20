@@ -1,15 +1,35 @@
 syntax = "proto3";
-package  protoc;
-message sHandleConnMsg{
-    string query = 1;
-//  required: 必须出现一次 optional: 不超过一次
+package google.protobuf;
+option csharp_namespace = "Google.Protobuf.WellKnownTypes";
+
+message Msg{
+    string query    = 1;  //请求名字
+    MsgType type    = 2;  //请求类型,消息分发
+    Respon respon   = 3;  //服务器响应状态
+    Login  login    = 4;  //登录用的信息
+    //...各种参数
 }
 
-message sHandlePlayerEvent{
-    string query = 1;
+enum MsgType{
+    connMsg = 0;
+    playerEvent = 1;
+    playerMsg = 2;
 }
 
-message sHandlePlayerMsg{
-    string query = 1;
+message Respon{
+    int32 code = 1;
+    string msg = 2;
+    int32 value = 3;
+}
+
+message Login{
+    string id = 1;
+    string pw = 2;
+}
+
+message Pos{
+    float x = 1;
+    float y = 2;
+    float z = 3;
 }
 //protoc protobuf.proto --csharp_out=./

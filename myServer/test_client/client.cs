@@ -9,7 +9,7 @@ using ServNet;
 
 namespace test_client
 {
-    public class client
+    public class test_client
     {
         public Socket _socket;
         public const int BUFFER_SIZE = 1024;

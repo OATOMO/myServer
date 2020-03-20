@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net.Sockets;
 using DataMgr;
-using MySqlX.Protocol;
 
 namespace ServNet
 {

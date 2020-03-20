@@ -4,7 +4,6 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using DataMgr;
-using MySql.Data.MySqlClient;
 using Npgsql;
 using NpgsqlTypes;
 using Org.BouncyCastle.Crypto.Tls;
