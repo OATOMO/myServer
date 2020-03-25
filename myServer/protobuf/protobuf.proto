@@ -5,8 +5,10 @@ option csharp_namespace = "Google.Protobuf.WellKnownTypes";
 message Msg{
     string query    = 1;  //请求名字
     MsgType type    = 2;  //请求类型,消息分发
-    Respon respon   = 3;  //服务器响应状态
+    Response response   = 3;  //服务器响应状态
     Login  login    = 4;  //登录用的信息
+    Register register = 5; //注册用的信息
+    map<string,PlayerInfo>  playerInfos = 6;
     //...各种参数
 }
 
@@ -14,9 +16,10 @@ enum MsgType{
     connMsg = 0;
     playerEvent = 1;
     playerMsg = 2;
+    response = 3;
 }
 
-message Respon{
+message Response{
     int32 code = 1;
     string msg = 2;
     int32 value = 3;
@@ -27,9 +30,22 @@ message Login{
     string pw = 2;
 }
 
+message Register{
+    string id = 1;
+    string pw = 2;
+    string phone = 3;
+    string email = 4;
+}
+
 message Pos{
     float x = 1;
     float y = 2;
     float z = 3;
+}
+
+message PlayerInfo{
+    string id = 1;
+    string nickName = 2;
+    Pos pos = 3;
 }
 //protoc protobuf.proto --csharp_out=./

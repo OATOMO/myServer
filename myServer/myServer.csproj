@@ -101,8 +101,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="client\Connection.cs" />
-    <Compile Include="client\MsgDistribution.cs" />
+    <!--    <Compile Include="client\Connection.cs" />-->
+    <!--    <Compile Include="client\MsgDistribution.cs" />-->
     <Compile Include="DataMgr\DataMgr.cs" />
     <Compile Include="DataMgr\Player.cs" />
     <Compile Include="DataMgr\PlayerData.cs" />
@@ -113,6 +113,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="protobuf\Protobuf.cs" />
+    <Compile Include="Scene\Scene.cs" />
+    <Compile Include="Scene\ScenePlayer.cs" />
     <Compile Include="ServNet\Conn.cs" />
     <Compile Include="ServNet\Protocol\ProtocolBase.cs" />
     <Compile Include="ServNet\Protocol\ProtocolBytes.cs" />

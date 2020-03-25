@@ -38,8 +38,13 @@ namespace ServNet{
             connMsg = 0;
             playerEvent = 1;
             playerMsg = 2;
+            response = 3;
         }
         */
+        public MsgType GetType()
+        {
+            return buf.Type;
+        }
         public int GetTypeIndex()
         {
             return (int)buf.Type;
@@ -53,17 +58,50 @@ namespace ServNet{
                     break;
                 case 2: result = "HandlePlayerMsg";
                     break;
+                case 3: result = "Response";
+                    break;
                 default: result = "";
                     break;
             }
             return result;
         }
-        
+        //set login 登录协议
+        public void SetLogin(string id, string pw) {
+            buf.Query = QueryName.Login.ToString();
+            buf.Type = MsgType.ConnMsg;
+            buf.Login = new Login();
+            buf.Login.Id = id;
+            buf.Login.Pw = pw;
+        }
+        //set Register 
+        public void SetRegister(string id,string pw,string phone,string email) {
+            buf.Query = QueryName.Register.ToString();
+            buf.Type = MsgType.ConnMsg;
+            buf.Register = new Register();
+            buf.Register.Id = id;
+            buf.Register.Pw = pw;
+            buf.Register.Phone = phone;
+            buf.Register.Email = email;
+        }
+
         //set respon
-        public void SetRespon(int code=0,string msg="",int value=0) {
-            buf.Respon.Code = code;
-            buf.Respon.Msg = msg;
-            buf.Respon.Value = value;
+        public void SetResponse(string query, int code=0,string msg="",int value=0) {
+            buf.Query = query;
+            buf.Type = MsgType.Response;
+            buf.Response = new Response();
+            buf.Response.Code = code;
+            buf.Response.Msg = msg;
+            buf.Response.Value = value;
+        }
+        public enum QueryName
+        {
+            Login,
+            Logout,
+            Register,
+            GetPlayerData,
+            PlayerLeave,
+            GetList,
+            UpdateInfo,
         }
     }
 }

@@ -24,12 +24,13 @@ namespace handleMsg
             
             //构建返回协议
             ProtocolPbprotobuf protocolRet = new ProtocolPbprotobuf();
-            protocolRet.SetName("Register");
             if (DataMgr.DataMgr.instance.Register(id,pw)){
-                protocolRet.SetRespon(0,"Register success");
+                protocolRet.SetResponse(ProtocolPbprotobuf.QueryName.Register.ToString(),
+                                    0,"Register success");
             }
             else{
-                protocolRet.SetRespon(-1,"Register fail");
+                protocolRet.SetResponse(ProtocolPbprotobuf.QueryName.Register.ToString(),
+                                    -1,"Register fail");
             }
             //创建角色
             // DataMgr.DataMgr.instance.CreatePlayer(id);  考虑一下
@@ -48,24 +49,26 @@ namespace handleMsg
             
             //构建返回协议
             ProtocolPbprotobuf protocolRet = new ProtocolPbprotobuf();
-            protocol.SetName("Login");
             //验证
             if (!DataMgr.DataMgr.instance.CheckPassword(id,pw)){
-                protocolRet.SetRespon(-1,"login fail");
+                protocolRet.SetResponse(ProtocolPbprotobuf.QueryName.Login.ToString(),
+                                            -1,"login fail");
                 conn.Send(protocolRet);
                 return;
             }
             //是否已登录
             ProtocolPbprotobuf protocolLogout = new ProtocolPbprotobuf();
-            protocolLogout.SetName("Logout");
+            protocolLogout.SetName(ProtocolPbprotobuf.QueryName.Logout.ToString());
             if (!Player.KickOff(id,protocolLogout)){    //不查询,直接踢
-                protocolRet.SetRespon(-1,"踢人失败 T_T");
+                protocolRet.SetResponse(ProtocolPbprotobuf.QueryName.Login.ToString(),
+                                        -1,"踢人失败 T_T");
                 conn.Send(protocolRet);
             }
             //获取玩家数据
             PlayerData playerData = DataMgr.DataMgr.instance.GetPlayerData(id);
             if (playerData == null){
-                protocolRet.SetRespon(-1,"get PlayerData fail T_T");
+                protocolRet.SetResponse(ProtocolPbprotobuf.QueryName.GetPlayerData.ToString(),
+                                                        -1,"get PlayerData fail T_T");
                 conn.Send(protocolRet);
                 return;
             }
@@ -74,7 +77,7 @@ namespace handleMsg
             //事件触发
             ServNet.ServNet._instance.HandlePlayerEvent.OnLogin(conn._player);
             //返回
-            protocolRet.SetRespon(0,"login success");
+            protocolRet.SetResponse(ProtocolPbprotobuf.QueryName.Login.ToString(),0,"login success");
             conn.Send(protocolRet);
             return;
         }
@@ -83,8 +86,7 @@ namespace handleMsg
         //返回协议:0正常下线
         public void MsgLogout(Conn conn,ProtocolBase protocolBase) {
             ProtocolPbprotobuf protocolRet = new ProtocolPbprotobuf();
-            protocolRet.SetName("Log");
-            protocolRet.SetRespon(code:0,msg:"Logout");
+            protocolRet.SetResponse(ProtocolPbprotobuf.QueryName.Logout.ToString(),code:0,msg:"Logout");
             if (conn._player == null){
                 conn.Send(protocolRet);
                 conn.Close();

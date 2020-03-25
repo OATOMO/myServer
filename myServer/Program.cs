@@ -15,6 +15,7 @@ namespace myServer
         {
             ServNet.ServNet servNet = new ServNet.ServNet();
             servNet.proto = new ProtocolPbprotobuf();
+            Scene.Scene scene = new Scene.Scene();
             servNet.Start("127.0.0.1",6666);
             Console.ReadLine();
         }
