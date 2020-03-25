@@ -14,6 +14,7 @@ namespace myServer
         public static void test_servNet_1()
         {
             ServNet.ServNet servNet = new ServNet.ServNet();
+            DataMgr.DataMgr dataMgr = new DataMgr.DataMgr();
             servNet.proto = new ProtocolPbprotobuf();
             Scene.Scene scene = new Scene.Scene();
             servNet.Start("127.0.0.1",6666);

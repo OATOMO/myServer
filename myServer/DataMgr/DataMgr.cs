@@ -26,7 +26,7 @@ namespace DataMgr
         public void ConnectPG()
         {
             //数据库
-            string connStr = "Host=localhost;Port=5432;Username=unityServer;Password=123456;Database=game";
+            string connStr = "Host=localhost;Port=5433;Username=unityServer;Password=123456;Database=game";
             PGConn = new NpgsqlConnection(connStr);
             try
             {
