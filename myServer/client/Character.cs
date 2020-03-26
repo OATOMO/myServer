@@ -1,39 +1,40 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Versioning;
+using UnityEngine;
 
 namespace client
 {
     // Character _char = new Character(model,mat);
     // _char.change('hair','')
     public class Character
-    {
-        private GameObject _model;    //character模型
+    {    
+        public  Transform _model;    //character模型
         private Material _mat;       //Material
         private Gender _gender;
         //与列表对应的字符串
-        Dictionary<string, List<GameObject>> PartMap;
+        Dictionary<string, List<GameObject>> PartMap = new Dictionary<string, List<GameObject>>();
         //存放有哪些part可以设置的DICT
-        Dictionary<string, int> PartIndex;
+        Dictionary<string, int> PartIndex = new Dictionary<string, int>();
         //保存当前的index
-        Dictionary<string, int> CurrentPartIndex;
+        Dictionary<string, int> CurrentPartIndex = new Dictionary<string, int>();
         
         // character object lists
         // male list 
         [HideInInspector]
-        public CharacterObjectGroups male;
+        public CharacterObjectGroups male = new CharacterObjectGroups();
         // female list
         [HideInInspector]
-        public CharacterObjectGroups female;
+        public CharacterObjectGroups female = new CharacterObjectGroups();
         // universal list
         [HideInInspector]
-        public CharacterObjectListsAllGender allGender;
+        public CharacterObjectListsAllGender allGender = new CharacterObjectListsAllGender();
         [HideInInspector]
         public List<GameObject> enabledObjects = new List<GameObject>();
         //构造函数 
-        public Character(GameObject model) {
+        public Character(Transform model) {
             _model = model;
-            _mat = new Material();
+            // _mat = new Material();
             SetGender(Gender.Male);
         }
         //设置性别
@@ -119,7 +120,10 @@ namespace client
         }
 
         // called from the BuildLists method
-        void BuildList(List<GameObject> targetList, string characterPart) {
+        void BuildList(ref List<GameObject> targetList, string characterPart) {
+            if (targetList == null) {
+                targetList = new List<GameObject>();
+            }
             Transform[] rootTransform = _model.GetComponentsInChildren<Transform>();
 
             // declare target root transform
@@ -153,7 +157,7 @@ namespace client
                 if (!_mat)
                 {
                     if (go.GetComponent<SkinnedMeshRenderer>())
-                        go.GetComponent<SkinnedMeshRenderer>().material.CopyPropertiesFromMaterial(_mat);
+                        _mat = new Material(go.GetComponent<SkinnedMeshRenderer>().material);
                 }
             }
             PartIndex[characterPart] = targetRoot.childCount;
@@ -163,53 +167,53 @@ namespace client
         private void BuildLists()
         {
             //build out male lists
-            BuildList(male.headAllElements, "Male_Head_All_Elements");
-            BuildList(male.headNoElements, "Male_Head_No_Elements");
-            BuildList(male.eyebrow, "Male_01_Eyebrows");
-            BuildList(male.facialHair, "Male_02_FacialHair");
-            BuildList(male.torso, "Male_03_Torso");
-            BuildList(male.arm_Upper_Right, "Male_04_Arm_Upper_Right");
-            BuildList(male.arm_Upper_Left, "Male_05_Arm_Upper_Left");
-            BuildList(male.arm_Lower_Right, "Male_06_Arm_Lower_Right");
-            BuildList(male.arm_Lower_Left, "Male_07_Arm_Lower_Left");
-            BuildList(male.hand_Right, "Male_08_Hand_Right");
-            BuildList(male.hand_Left, "Male_09_Hand_Left");
-            BuildList(male.hips, "Male_10_Hips");
-            BuildList(male.leg_Right, "Male_11_Leg_Right");
-            BuildList(male.leg_Left, "Male_12_Leg_Left");
+            BuildList(ref male.headAllElements, "Male_Head_All_Elements");
+            BuildList(ref male.headNoElements, "Male_Head_No_Elements");
+            BuildList(ref male.eyebrow, "Male_01_Eyebrows");
+            BuildList(ref male.facialHair, "Male_02_FacialHair");
+            BuildList(ref male.torso, "Male_03_Torso");
+            BuildList(ref male.arm_Upper_Right, "Male_04_Arm_Upper_Right");
+            BuildList(ref male.arm_Upper_Left, "Male_05_Arm_Upper_Left");
+            BuildList(ref male.arm_Lower_Right, "Male_06_Arm_Lower_Right");
+            BuildList(ref male.arm_Lower_Left, "Male_07_Arm_Lower_Left");
+            BuildList(ref male.hand_Right, "Male_08_Hand_Right");
+            BuildList(ref male.hand_Left, "Male_09_Hand_Left");
+            BuildList(ref male.hips, "Male_10_Hips");
+            BuildList(ref male.leg_Right, "Male_11_Leg_Right");
+            BuildList(ref male.leg_Left, "Male_12_Leg_Left");
 
             //build out female lists
-            BuildList(female.headAllElements, "Female_Head_All_Elements");
-            BuildList(female.headNoElements, "Female_Head_No_Elements");
-            BuildList(female.eyebrow, "Female_01_Eyebrows");
-            BuildList(female.facialHair, "Female_02_FacialHair");
-            BuildList(female.torso, "Female_03_Torso");
-            BuildList(female.arm_Upper_Right, "Female_04_Arm_Upper_Right");
-            BuildList(female.arm_Upper_Left, "Female_05_Arm_Upper_Left");
-            BuildList(female.arm_Lower_Right, "Female_06_Arm_Lower_Right");
-            BuildList(female.arm_Lower_Left, "Female_07_Arm_Lower_Left");
-            BuildList(female.hand_Right, "Female_08_Hand_Right");
-            BuildList(female.hand_Left, "Female_09_Hand_Left");
-            BuildList(female.hips, "Female_10_Hips");
-            BuildList(female.leg_Right, "Female_11_Leg_Right");
-            BuildList(female.leg_Left, "Female_12_Leg_Left");
+            BuildList(ref female.headAllElements, "Female_Head_All_Elements");
+            BuildList(ref female.headNoElements, "Female_Head_No_Elements");
+            BuildList(ref female.eyebrow, "Female_01_Eyebrows");
+            BuildList(ref female.facialHair, "Female_02_FacialHair");
+            BuildList(ref female.torso, "Female_03_Torso");
+            BuildList(ref female.arm_Upper_Right, "Female_04_Arm_Upper_Right");
+            BuildList(ref female.arm_Upper_Left, "Female_05_Arm_Upper_Left");
+            BuildList(ref female.arm_Lower_Right, "Female_06_Arm_Lower_Right");
+            BuildList(ref female.arm_Lower_Left, "Female_07_Arm_Lower_Left");
+            BuildList(ref female.hand_Right, "Female_08_Hand_Right");
+            BuildList(ref female.hand_Left, "Female_09_Hand_Left");
+            BuildList(ref female.hips, "Female_10_Hips");
+            BuildList(ref female.leg_Right, "Female_11_Leg_Right");
+            BuildList(ref female.leg_Left, "Female_12_Leg_Left");
 
             // build out all gender lists
-            BuildList(allGender.all_Hair, "All_01_Hair");
-            BuildList(allGender.all_Head_Attachment, "All_02_Head_Attachment");
-            BuildList(allGender.headCoverings_Base_Hair, "HeadCoverings_Base_Hair");
-            BuildList(allGender.headCoverings_No_FacialHair, "HeadCoverings_No_FacialHair");
-            BuildList(allGender.headCoverings_No_Hair, "HeadCoverings_No_Hair");
-            BuildList(allGender.chest_Attachment, "All_03_Chest_Attachment");
-            BuildList(allGender.back_Attachment, "All_04_Back_Attachment");
-            BuildList(allGender.shoulder_Attachment_Right, "All_05_Shoulder_Attachment_Right");
-            BuildList(allGender.shoulder_Attachment_Left, "All_06_Shoulder_Attachment_Left");
-            BuildList(allGender.elbow_Attachment_Right, "All_07_Elbow_Attachment_Right");
-            BuildList(allGender.elbow_Attachment_Left, "All_08_Elbow_Attachment_Left");
-            BuildList(allGender.hips_Attachment, "All_09_Hips_Attachment");
-            BuildList(allGender.knee_Attachement_Right, "All_10_Knee_Attachement_Right");
-            BuildList(allGender.knee_Attachement_Left, "All_11_Knee_Attachement_Left");
-            BuildList(allGender.elf_Ear, "Elf_Ear");
+            BuildList(ref allGender.all_Hair, "All_01_Hair");
+            BuildList(ref allGender.all_Head_Attachment, "All_02_Head_Attachment");
+            BuildList(ref allGender.headCoverings_Base_Hair, "HeadCoverings_Base_Hair");
+            BuildList(ref allGender.headCoverings_No_FacialHair, "HeadCoverings_No_FacialHair");
+            BuildList(ref allGender.headCoverings_No_Hair, "HeadCoverings_No_Hair");
+            BuildList(ref allGender.chest_Attachment, "All_03_Chest_Attachment");
+            BuildList(ref allGender.back_Attachment, "All_04_Back_Attachment");
+            BuildList(ref allGender.shoulder_Attachment_Right, "All_05_Shoulder_Attachment_Right");
+            BuildList(ref allGender.shoulder_Attachment_Left, "All_06_Shoulder_Attachment_Left");
+            BuildList(ref allGender.elbow_Attachment_Right, "All_07_Elbow_Attachment_Right");
+            BuildList(ref allGender.elbow_Attachment_Left, "All_08_Elbow_Attachment_Left");
+            BuildList(ref allGender.hips_Attachment, "All_09_Hips_Attachment");
+            BuildList(ref allGender.knee_Attachement_Right, "All_10_Knee_Attachement_Right");
+            BuildList(ref allGender.knee_Attachement_Left, "All_11_Knee_Attachement_Left");
+            BuildList(ref allGender.elf_Ear, "Elf_Ear");
         }
     }
     
