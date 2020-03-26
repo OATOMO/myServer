@@ -136,7 +136,7 @@ namespace DataMgr
             if (!IsSafeStr(id) || !IsSafeStr(pw))
                 return false;
             //查询
-            string cmdStr = string.Format("select * from user where id='{0}' and pw='{1}';",id,pw);
+            string cmdStr = string.Format("select * from b_user where id='{0}' and pw='{1}';",id,pw);
             NpgsqlCommand cmd = new NpgsqlCommand(cmdStr,PGConn);
             try
             {

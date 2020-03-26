@@ -17,8 +17,8 @@ namespace handleMsg
             ProtocolPbprotobuf protocol = (ProtocolPbprotobuf) protocolBase;
             string protoName = protocol.GetName();
             string protoType = protocol.GetTypeStr();
-            string id = protocol.buf.Login.Id;
-            string pw = protocol.buf.Login.Pw;
+            string id = protocol.buf.Register.Id;
+            string pw = protocol.buf.Register.Pw;
             string strFormat = "[收到注册协议] : " + conn.GetAdress();
             Console.WriteLine(strFormat + " 用户名:" + id + " 密码:" + pw);
             

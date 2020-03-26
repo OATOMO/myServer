@@ -230,7 +230,7 @@ namespace ServNet
             string methodName = "Msg" + name;
             // Console.WriteLine("[收到协议] : " + name);
             //连接协议分发
-            if (conn._player == null || name == "HeatBeat" || name == "Logout"){
+            if (conn._player == null || name == "HeatBeat" || name == "Logout" || name == "Login"){
                 MethodInfo mm = HandleConnMsg.GetType().GetMethod(methodName);
                 if (mm == null){
                     Console.WriteLine("[warning]HandleConnMsg 没有处理连接方法: " + methodName);
