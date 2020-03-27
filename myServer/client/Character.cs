@@ -52,42 +52,44 @@ namespace client
             }
             // clear enabled objects list
             enabledObjects.Clear();
+            CurrentPartIndex.Clear();
             if (gender == Gender.Male){
                 // set default male character
-                ActivateItem(male.headAllElements[0]);
-                ActivateItem(male.eyebrow[0]);
-                ActivateItem(male.facialHair[0]);
-                ActivateItem(male.torso[0]);
-                ActivateItem(male.arm_Upper_Right[0]);
-                ActivateItem(male.arm_Upper_Left[0]);
-                ActivateItem(male.arm_Lower_Right[0]);
-                ActivateItem(male.arm_Lower_Left[0]);
-                ActivateItem(male.hand_Right[0]);
-                ActivateItem(male.hand_Left[0]);
-                ActivateItem(male.hips[0]);
-                ActivateItem(male.leg_Right[0]);
-                ActivateItem(male.leg_Left[0]);
+                SetCharacter("Male_Head_All_Elements",0);
+                SetCharacter("Male_01_Eyebrows",0);
+                SetCharacter("Male_02_FacialHair",0);
+                SetCharacter("Male_03_Torso",0);
+                SetCharacter("Male_04_Arm_Upper_Right",0);
+                SetCharacter("Male_05_Arm_Upper_Left",0);
+                SetCharacter("Male_06_Arm_Lower_Right",0);
+                SetCharacter("Male_07_Arm_Lower_Left",0);
+                SetCharacter("Male_08_Hand_Right",0);
+                SetCharacter("Male_09_Hand_Left",0);
+                SetCharacter("Male_10_Hips",0);
+                SetCharacter("Male_11_Leg_Right",0);
+                SetCharacter("Male_12_Leg_Left",0);
             }
             else if (gender == Gender.Female){
                 // set default female character
-                ActivateItem(female.headAllElements[0]);
-                ActivateItem(female.eyebrow[0]);
-                // ActivateItem(female.facialHair[0]);
-                ActivateItem(female.torso[0]);
-                ActivateItem(female.arm_Upper_Right[0]);
-                ActivateItem(female.arm_Upper_Left[0]);
-                ActivateItem(female.arm_Lower_Right[0]);
-                ActivateItem(female.arm_Lower_Left[0]);
-                ActivateItem(female.hand_Right[0]);
-                ActivateItem(female.hand_Left[0]);
-                ActivateItem(female.hips[0]);
-                ActivateItem(female.leg_Right[0]);
-                ActivateItem(female.leg_Left[0]);
+                SetCharacter("Male_Head_All_Elements",0);
+                SetCharacter("Male_01_Eyebrows",0);
+                // SetCharacter("Male_02_FacialHair",0);
+                SetCharacter("Male_03_Torso",0);
+                SetCharacter("Male_04_Arm_Upper_Right",0);
+                SetCharacter("Male_05_Arm_Upper_Left",0);
+                SetCharacter("Male_06_Arm_Lower_Right",0);
+                SetCharacter("Male_07_Arm_Lower_Left",0);
+                SetCharacter("Male_08_Hand_Right",0);
+                SetCharacter("Male_09_Hand_Left",0);
+                SetCharacter("Male_10_Hips",0);
+                SetCharacter("Male_11_Leg_Right",0);
+                SetCharacter("Male_12_Leg_Left",0);
             }
         }
         
         //设置外形
         public void SetCharacter(string part,int index) {
+            CurrentPartIndex[part] = index;
             ActivateItem(PartMap[part],index);
         }
         //获得角色部件的数量index
@@ -102,7 +104,17 @@ namespace client
         public Gender GetGender() {
             return _gender;
         }
-        
+        //获取当前所选part index
+        public Dictionary<string, int> GetCurrentPartIndex() {
+            return CurrentPartIndex;
+        }
+        public int GetCurrentPartIndex(string part) {
+            if (CurrentPartIndex.Keys.ToList().Contains(part)){
+                return CurrentPartIndex[part];
+            }
+            return -1;
+        }
+
         void ActivateItem(GameObject go)
         {
             // enable item
