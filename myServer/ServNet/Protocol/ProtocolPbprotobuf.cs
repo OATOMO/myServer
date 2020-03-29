@@ -93,11 +93,20 @@ namespace ServNet{
             buf.Response.Msg = msg;
             buf.Response.Value = value;
         }
+        //set createPlayer
+        public void SetCreatePlayer(string id,string part) {
+            buf.Query = QueryName.CreatePlayer.ToString();
+            buf.Type = MsgType.PlayerMsg;
+            buf.CreatePlayer.Id = id;
+            buf.CreatePlayer.PartIndex = part;
+        }
+
         public enum QueryName
         {
             Login,
             Logout,
             Register,
+            CreatePlayer,
             GetPlayerData,
             PlayerLeave,
             GetList,

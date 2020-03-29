@@ -24,27 +24,30 @@ namespace Google.Protobuf.WellKnownTypes {
     static ProtobufReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5wcm90b2J1Zi5wcm90bxIPZ29vZ2xlLnByb3RvYnVmIsoCCgNNc2cSDQoF",
+            "Cg5wcm90b2J1Zi5wcm90bxIPZ29vZ2xlLnByb3RvYnVmIv8CCgNNc2cSDQoF",
             "cXVlcnkYASABKAkSJgoEdHlwZRgCIAEoDjIYLmdvb2dsZS5wcm90b2J1Zi5N",
             "c2dUeXBlEisKCHJlc3BvbnNlGAMgASgLMhkuZ29vZ2xlLnByb3RvYnVmLlJl",
             "c3BvbnNlEiUKBWxvZ2luGAQgASgLMhYuZ29vZ2xlLnByb3RvYnVmLkxvZ2lu",
             "EisKCHJlZ2lzdGVyGAUgASgLMhkuZ29vZ2xlLnByb3RvYnVmLlJlZ2lzdGVy",
-            "EjoKC3BsYXllckluZm9zGAYgAygLMiUuZ29vZ2xlLnByb3RvYnVmLk1zZy5Q",
-            "bGF5ZXJJbmZvc0VudHJ5Gk8KEFBsYXllckluZm9zRW50cnkSCwoDa2V5GAEg",
-            "ASgJEioKBXZhbHVlGAIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLlBsYXllcklu",
-            "Zm86AjgBIjQKCFJlc3BvbnNlEgwKBGNvZGUYASABKAUSCwoDbXNnGAIgASgJ",
-            "Eg0KBXZhbHVlGAMgASgFIh8KBUxvZ2luEgoKAmlkGAEgASgJEgoKAnB3GAIg",
-            "ASgJIkAKCFJlZ2lzdGVyEgoKAmlkGAEgASgJEgoKAnB3GAIgASgJEg0KBXBo",
-            "b25lGAMgASgJEg0KBWVtYWlsGAQgASgJIiYKA1BvcxIJCgF4GAEgASgCEgkK",
-            "AXkYAiABKAISCQoBehgDIAEoAiJNCgpQbGF5ZXJJbmZvEgoKAmlkGAEgASgJ",
-            "EhAKCG5pY2tOYW1lGAIgASgJEiEKA3BvcxgDIAEoCzIULmdvb2dsZS5wcm90",
-            "b2J1Zi5Qb3MqRAoHTXNnVHlwZRILCgdjb25uTXNnEAASDwoLcGxheWVyRXZl",
-            "bnQQARINCglwbGF5ZXJNc2cQAhIMCghyZXNwb25zZRADQiGqAh5Hb29nbGUu",
-            "UHJvdG9idWYuV2VsbEtub3duVHlwZXNiBnByb3RvMw=="));
+            "EjMKDGNyZWF0ZVBsYXllchgGIAEoCzIdLmdvb2dsZS5wcm90b2J1Zi5DcmVh",
+            "dGVQbGF5ZXISOgoLcGxheWVySW5mb3MYByADKAsyJS5nb29nbGUucHJvdG9i",
+            "dWYuTXNnLlBsYXllckluZm9zRW50cnkaTwoQUGxheWVySW5mb3NFbnRyeRIL",
+            "CgNrZXkYASABKAkSKgoFdmFsdWUYAiABKAsyGy5nb29nbGUucHJvdG9idWYu",
+            "UGxheWVySW5mbzoCOAEiLQoMQ3JlYXRlUGxheWVyEgoKAmlkGAEgASgJEhEK",
+            "CXBhcnRJbmRleBgCIAEoCSI0CghSZXNwb25zZRIMCgRjb2RlGAEgASgFEgsK",
+            "A21zZxgCIAEoCRINCgV2YWx1ZRgDIAEoBSIfCgVMb2dpbhIKCgJpZBgBIAEo",
+            "CRIKCgJwdxgCIAEoCSJACghSZWdpc3RlchIKCgJpZBgBIAEoCRIKCgJwdxgC",
+            "IAEoCRINCgVwaG9uZRgDIAEoCRINCgVlbWFpbBgEIAEoCSImCgNQb3MSCQoB",
+            "eBgBIAEoAhIJCgF5GAIgASgCEgkKAXoYAyABKAIiTQoKUGxheWVySW5mbxIK",
+            "CgJpZBgBIAEoCRIQCghuaWNrTmFtZRgCIAEoCRIhCgNwb3MYAyABKAsyFC5n",
+            "b29nbGUucHJvdG9idWYuUG9zKkQKB01zZ1R5cGUSCwoHY29ubk1zZxAAEg8K",
+            "C3BsYXllckV2ZW50EAESDQoJcGxheWVyTXNnEAISDAoIcmVzcG9uc2UQA0Ih",
+            "qgIeR29vZ2xlLlByb3RvYnVmLldlbGxLbm93blR5cGVzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.WellKnownTypes.MsgType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Msg), global::Google.Protobuf.WellKnownTypes.Msg.Parser, new[]{ "Query", "Type", "Response", "Login", "Register", "PlayerInfos" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Msg), global::Google.Protobuf.WellKnownTypes.Msg.Parser, new[]{ "Query", "Type", "Response", "Login", "Register", "CreatePlayer", "PlayerInfos" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.CreatePlayer), global::Google.Protobuf.WellKnownTypes.CreatePlayer.Parser, new[]{ "Id", "PartIndex" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Response), global::Google.Protobuf.WellKnownTypes.Response.Parser, new[]{ "Code", "Msg", "Value" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Login), global::Google.Protobuf.WellKnownTypes.Login.Parser, new[]{ "Id", "Pw" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Register), global::Google.Protobuf.WellKnownTypes.Register.Parser, new[]{ "Id", "Pw", "Phone", "Email" }, null, null, null, null),
@@ -96,6 +99,7 @@ namespace Google.Protobuf.WellKnownTypes {
       response_ = other.response_ != null ? other.response_.Clone() : null;
       login_ = other.login_ != null ? other.login_.Clone() : null;
       register_ = other.register_ != null ? other.register_.Clone() : null;
+      createPlayer_ = other.createPlayer_ != null ? other.createPlayer_.Clone() : null;
       playerInfos_ = other.playerInfos_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -175,10 +179,24 @@ namespace Google.Protobuf.WellKnownTypes {
       }
     }
 
+    /// <summary>Field number for the "createPlayer" field.</summary>
+    public const int CreatePlayerFieldNumber = 6;
+    private global::Google.Protobuf.WellKnownTypes.CreatePlayer createPlayer_;
+    /// <summary>
+    ///创建角色的信息
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.WellKnownTypes.CreatePlayer CreatePlayer {
+      get { return createPlayer_; }
+      set {
+        createPlayer_ = value;
+      }
+    }
+
     /// <summary>Field number for the "playerInfos" field.</summary>
-    public const int PlayerInfosFieldNumber = 6;
+    public const int PlayerInfosFieldNumber = 7;
     private static readonly pbc::MapField<string, global::Google.Protobuf.WellKnownTypes.PlayerInfo>.Codec _map_playerInfos_codec
-        = new pbc::MapField<string, global::Google.Protobuf.WellKnownTypes.PlayerInfo>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::Google.Protobuf.WellKnownTypes.PlayerInfo.Parser), 50);
+        = new pbc::MapField<string, global::Google.Protobuf.WellKnownTypes.PlayerInfo>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::Google.Protobuf.WellKnownTypes.PlayerInfo.Parser), 58);
     private readonly pbc::MapField<string, global::Google.Protobuf.WellKnownTypes.PlayerInfo> playerInfos_ = new pbc::MapField<string, global::Google.Protobuf.WellKnownTypes.PlayerInfo>();
     /// <summary>
     ///...各种参数
@@ -206,6 +224,7 @@ namespace Google.Protobuf.WellKnownTypes {
       if (!object.Equals(Response, other.Response)) return false;
       if (!object.Equals(Login, other.Login)) return false;
       if (!object.Equals(Register, other.Register)) return false;
+      if (!object.Equals(CreatePlayer, other.CreatePlayer)) return false;
       if (!PlayerInfos.Equals(other.PlayerInfos)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -218,6 +237,7 @@ namespace Google.Protobuf.WellKnownTypes {
       if (response_ != null) hash ^= Response.GetHashCode();
       if (login_ != null) hash ^= Login.GetHashCode();
       if (register_ != null) hash ^= Register.GetHashCode();
+      if (createPlayer_ != null) hash ^= CreatePlayer.GetHashCode();
       hash ^= PlayerInfos.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -252,6 +272,10 @@ namespace Google.Protobuf.WellKnownTypes {
         output.WriteRawTag(42);
         output.WriteMessage(Register);
       }
+      if (createPlayer_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(CreatePlayer);
+      }
       playerInfos_.WriteTo(output, _map_playerInfos_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -275,6 +299,9 @@ namespace Google.Protobuf.WellKnownTypes {
       }
       if (register_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Register);
+      }
+      if (createPlayer_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CreatePlayer);
       }
       size += playerInfos_.CalculateSize(_map_playerInfos_codec);
       if (_unknownFields != null) {
@@ -311,6 +338,12 @@ namespace Google.Protobuf.WellKnownTypes {
           Register = new global::Google.Protobuf.WellKnownTypes.Register();
         }
         Register.MergeFrom(other.Register);
+      }
+      if (other.createPlayer_ != null) {
+        if (createPlayer_ == null) {
+          CreatePlayer = new global::Google.Protobuf.WellKnownTypes.CreatePlayer();
+        }
+        CreatePlayer.MergeFrom(other.CreatePlayer);
       }
       playerInfos_.Add(other.playerInfos_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -354,7 +387,171 @@ namespace Google.Protobuf.WellKnownTypes {
             break;
           }
           case 50: {
+            if (createPlayer_ == null) {
+              CreatePlayer = new global::Google.Protobuf.WellKnownTypes.CreatePlayer();
+            }
+            input.ReadMessage(CreatePlayer);
+            break;
+          }
+          case 58: {
             playerInfos_.AddEntriesFrom(input, _map_playerInfos_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class CreatePlayer : pb::IMessage<CreatePlayer> {
+    private static readonly pb::MessageParser<CreatePlayer> _parser = new pb::MessageParser<CreatePlayer>(() => new CreatePlayer());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<CreatePlayer> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CreatePlayer() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CreatePlayer(CreatePlayer other) : this() {
+      id_ = other.id_;
+      partIndex_ = other.partIndex_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CreatePlayer Clone() {
+      return new CreatePlayer(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private string id_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "partIndex" field.</summary>
+    public const int PartIndexFieldNumber = 2;
+    private string partIndex_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string PartIndex {
+      get { return partIndex_; }
+      set {
+        partIndex_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as CreatePlayer);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(CreatePlayer other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (PartIndex != other.PartIndex) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (PartIndex.Length != 0) hash ^= PartIndex.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (PartIndex.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(PartIndex);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (PartIndex.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PartIndex);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(CreatePlayer other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      if (other.PartIndex.Length != 0) {
+        PartIndex = other.PartIndex;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Id = input.ReadString();
+            break;
+          }
+          case 18: {
+            PartIndex = input.ReadString();
             break;
           }
         }
@@ -371,7 +568,7 @@ namespace Google.Protobuf.WellKnownTypes {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -556,7 +753,7 @@ namespace Google.Protobuf.WellKnownTypes {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -713,7 +910,7 @@ namespace Google.Protobuf.WellKnownTypes {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -926,7 +1123,7 @@ namespace Google.Protobuf.WellKnownTypes {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1111,7 +1308,7 @@ namespace Google.Protobuf.WellKnownTypes {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Google.Protobuf.WellKnownTypes.ProtobufReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
