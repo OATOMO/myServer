@@ -46,6 +46,5 @@ namespace handleMsg
                 ServNet.ServNet._instance.Broadcast(protocolRet);
             }
         }
-
     }
 }

@@ -1,6 +1,10 @@
 ﻿using System;
 using DataMgr;
+using Google.Protobuf.WellKnownTypes;
+using Npgsql.Logging;
 using ServNet;
+using PlayerData = DataMgr.PlayerData;
+
 namespace handleMsg
 {
     //处理连接协议 
@@ -56,27 +60,32 @@ namespace handleMsg
                 conn.Send(protocolRet);
                 return;
             }
+            Console.WriteLine("存在账户");
             //是否已登录
             ProtocolPbprotobuf protocolLogout = new ProtocolPbprotobuf();
             protocolLogout.SetName(ProtocolPbprotobuf.QueryName.Logout.ToString());
             if (!Player.KickOff(id,protocolLogout)){    //不查询,直接踢
                 protocolRet.SetResponse(ProtocolPbprotobuf.QueryName.Login.ToString(),
-                                        -1,"踢人失败 T_T");
+                                        -1,
+                                        "踢人失败 T_T");
                 conn.Send(protocolRet);
             }
             //获取玩家数据
             PlayerData playerData = DataMgr.DataMgr.instance.GetPlayerData(id);
             if (playerData == null){
-                protocolRet.SetResponse(ProtocolPbprotobuf.QueryName.GetPlayerData.ToString(),
-                                                        -1,"get PlayerData fail T_T");
+                protocolRet.SetResponse(ProtocolPbprotobuf.QueryName.Login.ToString(),
+                                                        1,// (int)Code.NoPlayer,
+                                                        "get PlayerData fail T_T");
                 conn.Send(protocolRet);
                 return;
             }
+            Console.WriteLine("存在角色");
             conn._player = new Player(id,conn);
             conn._player.data = playerData;
             //事件触发
             ServNet.ServNet._instance.HandlePlayerEvent.OnLogin(conn._player);
             //返回
+            protocolRet.SetPlayerData(id, playerData.partIndex);
             protocolRet.SetResponse(ProtocolPbprotobuf.QueryName.Login.ToString(),0,"login success");
             conn.Send(protocolRet);
             return;
@@ -95,6 +104,12 @@ namespace handleMsg
                 conn.Send(protocolRet);
                 conn._player.Logout();
             }
+        }
+        public void MsgCreatePlayer(Conn conn,ProtocolBase protocolBase) {
+            ProtocolPbprotobuf protocol = (ProtocolPbprotobuf) protocolBase;
+            string id = protocol.buf.PlayerData.Id;
+            string Partindex = protocol.buf.PlayerData.PartIndex;
+            Console.WriteLine("id : " + id + " partIndex : " + Partindex);
         }
     }
 }

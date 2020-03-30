@@ -4,6 +4,11 @@ using System;
 using Enum = Google.Protobuf.WellKnownTypes.Enum;
 
 namespace ServNet{
+    public enum Code{
+        Fail = -1,
+        Success = 0,
+        NoPlayer = 1, //没有player。得创建
+    }
     public class ProtocolPbprotobuf: ProtocolBase
     {
         //传输的protobuf
@@ -94,11 +99,12 @@ namespace ServNet{
             buf.Response.Value = value;
         }
         //set createPlayer
-        public void SetCreatePlayer(string id,string part) {
+        public void SetPlayerData(string id,string part) {
             buf.Query = QueryName.CreatePlayer.ToString();
             buf.Type = MsgType.PlayerMsg;
-            buf.CreatePlayer.Id = id;
-            buf.CreatePlayer.PartIndex = part;
+            buf.PlayerData = new PlayerData();
+            buf.PlayerData.Id = id;
+            buf.PlayerData.PartIndex = part;
         }
 
         public enum QueryName

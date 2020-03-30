@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Common;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -92,41 +93,72 @@ namespace DataMgr
             }
         }
         //创建角色
-        public bool CreatePlayer(string id)
-        {
+        // public bool CreatePlayer(string id)
+        // {
+        //     //防SQL注入
+        //     if (!IsSafeStr(id))
+        //         return false;
+        //     //序列化
+        //     IFormatter formatter = new BinaryFormatter();
+        //     MemoryStream stream = new MemoryStream();
+        //     PlayerData playerData = new PlayerData();
+        //     try
+        //     {
+        //         formatter.Serialize(stream,playerData);
+        //     }
+        //     catch (Exception e)
+        //     {
+        //         Console.WriteLine("[DataMgr]CreatePlayer 序列化 : "+e.Message);
+        //         return false;
+        //     }
+        //     byte[] byteArr = stream.ToArray();
+        //     //写入数据库
+        //     string cmdStr = string.Format("insert into player set id='{0}',data=@data;",id);
+        //     NpgsqlCommand cmd = new NpgsqlCommand(cmdStr,PGConn);
+        //     cmd.Parameters.Add("@data", NpgsqlDbType.Boolean);
+        //     cmd.Parameters[0].Value = byteArr;
+        //     try
+        //     {
+        //         cmd.ExecuteNonQuery();
+        //         return true;
+        //     }
+        //     catch (Exception e)
+        //     {
+        //         Console.WriteLine("[DataMgr]Create 写入 : " + e.Message);
+        //         return false;
+        //     }
+        // }
+        //get玩家数据
+        public PlayerData GetPlayerData(string id) {
             //防SQL注入
             if (!IsSafeStr(id))
-                return false;
-            //序列化
-            IFormatter formatter = new BinaryFormatter();
-            MemoryStream stream = new MemoryStream();
-            PlayerData playerData = new PlayerData();
-            try
-            {
-                formatter.Serialize(stream,playerData);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("[DataMgr]CreatePlayer 序列化 : "+e.Message);
-                return false;
-            }
-            byte[] byteArr = stream.ToArray();
-            //写入数据库
-            string cmdStr = string.Format("insert into player set id='{0}',data=@data;",id);
+                return null;
+            // 查询
+            string cmdStr = string.Format("select * from b_player where id='{0}';",id);
             NpgsqlCommand cmd = new NpgsqlCommand(cmdStr,PGConn);
-            cmd.Parameters.Add("@data", NpgsqlDbType.Boolean);
-            cmd.Parameters[0].Value = byteArr;
             try
             {
-                cmd.ExecuteNonQuery();
-                return true;
+                NpgsqlDataReader dataReader = cmd.ExecuteReader();
+                bool hasRows = dataReader.HasRows;
+                if (!hasRows) {
+                    dataReader.Close();
+                    return null;
+                }
+
+                PlayerData retData = new PlayerData();
+                while (dataReader.Read()) {
+                     retData = new PlayerData(dataReader["part_index"].ToString());
+                }
+                dataReader.Close();
+                return retData;
+                
+                
             }
             catch (Exception e)
             {
-                Console.WriteLine("[DataMgr]Create 写入 : " + e.Message);
-                return false;
+                Console.WriteLine("[DataMgr]GetPlayerData : " + e.Message);
+                return null;
             }
-
         }
 
         //检查用户名和密码
@@ -151,11 +183,7 @@ namespace DataMgr
                 return false;
             }
         }
-        //todo:获取玩家数据
-        public PlayerData GetPlayerData(string id) {
-            return new PlayerData();
-        }
-        
+
         //todo:保存玩家数据
         public bool SavePlayerData(Player player) {
             return false;

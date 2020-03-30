@@ -24,30 +24,30 @@ namespace Google.Protobuf.WellKnownTypes {
     static ProtobufReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5wcm90b2J1Zi5wcm90bxIPZ29vZ2xlLnByb3RvYnVmIv8CCgNNc2cSDQoF",
+            "Cg5wcm90b2J1Zi5wcm90bxIPZ29vZ2xlLnByb3RvYnVmIvsCCgNNc2cSDQoF",
             "cXVlcnkYASABKAkSJgoEdHlwZRgCIAEoDjIYLmdvb2dsZS5wcm90b2J1Zi5N",
             "c2dUeXBlEisKCHJlc3BvbnNlGAMgASgLMhkuZ29vZ2xlLnByb3RvYnVmLlJl",
             "c3BvbnNlEiUKBWxvZ2luGAQgASgLMhYuZ29vZ2xlLnByb3RvYnVmLkxvZ2lu",
             "EisKCHJlZ2lzdGVyGAUgASgLMhkuZ29vZ2xlLnByb3RvYnVmLlJlZ2lzdGVy",
-            "EjMKDGNyZWF0ZVBsYXllchgGIAEoCzIdLmdvb2dsZS5wcm90b2J1Zi5DcmVh",
-            "dGVQbGF5ZXISOgoLcGxheWVySW5mb3MYByADKAsyJS5nb29nbGUucHJvdG9i",
-            "dWYuTXNnLlBsYXllckluZm9zRW50cnkaTwoQUGxheWVySW5mb3NFbnRyeRIL",
-            "CgNrZXkYASABKAkSKgoFdmFsdWUYAiABKAsyGy5nb29nbGUucHJvdG9idWYu",
-            "UGxheWVySW5mbzoCOAEiLQoMQ3JlYXRlUGxheWVyEgoKAmlkGAEgASgJEhEK",
-            "CXBhcnRJbmRleBgCIAEoCSI0CghSZXNwb25zZRIMCgRjb2RlGAEgASgFEgsK",
-            "A21zZxgCIAEoCRINCgV2YWx1ZRgDIAEoBSIfCgVMb2dpbhIKCgJpZBgBIAEo",
-            "CRIKCgJwdxgCIAEoCSJACghSZWdpc3RlchIKCgJpZBgBIAEoCRIKCgJwdxgC",
-            "IAEoCRINCgVwaG9uZRgDIAEoCRINCgVlbWFpbBgEIAEoCSImCgNQb3MSCQoB",
-            "eBgBIAEoAhIJCgF5GAIgASgCEgkKAXoYAyABKAIiTQoKUGxheWVySW5mbxIK",
-            "CgJpZBgBIAEoCRIQCghuaWNrTmFtZRgCIAEoCRIhCgNwb3MYAyABKAsyFC5n",
-            "b29nbGUucHJvdG9idWYuUG9zKkQKB01zZ1R5cGUSCwoHY29ubk1zZxAAEg8K",
-            "C3BsYXllckV2ZW50EAESDQoJcGxheWVyTXNnEAISDAoIcmVzcG9uc2UQA0Ih",
-            "qgIeR29vZ2xlLlByb3RvYnVmLldlbGxLbm93blR5cGVzYgZwcm90bzM="));
+            "Ei8KCnBsYXllckRhdGEYBiABKAsyGy5nb29nbGUucHJvdG9idWYuUGxheWVy",
+            "RGF0YRI6CgtwbGF5ZXJJbmZvcxgHIAMoCzIlLmdvb2dsZS5wcm90b2J1Zi5N",
+            "c2cuUGxheWVySW5mb3NFbnRyeRpPChBQbGF5ZXJJbmZvc0VudHJ5EgsKA2tl",
+            "eRgBIAEoCRIqCgV2YWx1ZRgCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5QbGF5",
+            "ZXJJbmZvOgI4ASIrCgpQbGF5ZXJEYXRhEgoKAmlkGAEgASgJEhEKCXBhcnRJ",
+            "bmRleBgCIAEoCSI0CghSZXNwb25zZRIMCgRjb2RlGAEgASgFEgsKA21zZxgC",
+            "IAEoCRINCgV2YWx1ZRgDIAEoBSIfCgVMb2dpbhIKCgJpZBgBIAEoCRIKCgJw",
+            "dxgCIAEoCSJACghSZWdpc3RlchIKCgJpZBgBIAEoCRIKCgJwdxgCIAEoCRIN",
+            "CgVwaG9uZRgDIAEoCRINCgVlbWFpbBgEIAEoCSImCgNQb3MSCQoBeBgBIAEo",
+            "AhIJCgF5GAIgASgCEgkKAXoYAyABKAIiTQoKUGxheWVySW5mbxIKCgJpZBgB",
+            "IAEoCRIQCghuaWNrTmFtZRgCIAEoCRIhCgNwb3MYAyABKAsyFC5nb29nbGUu",
+            "cHJvdG9idWYuUG9zKkQKB01zZ1R5cGUSCwoHY29ubk1zZxAAEg8KC3BsYXll",
+            "ckV2ZW50EAESDQoJcGxheWVyTXNnEAISDAoIcmVzcG9uc2UQA0IhqgIeR29v",
+            "Z2xlLlByb3RvYnVmLldlbGxLbm93blR5cGVzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.WellKnownTypes.MsgType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Msg), global::Google.Protobuf.WellKnownTypes.Msg.Parser, new[]{ "Query", "Type", "Response", "Login", "Register", "CreatePlayer", "PlayerInfos" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.CreatePlayer), global::Google.Protobuf.WellKnownTypes.CreatePlayer.Parser, new[]{ "Id", "PartIndex" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Msg), global::Google.Protobuf.WellKnownTypes.Msg.Parser, new[]{ "Query", "Type", "Response", "Login", "Register", "PlayerData", "PlayerInfos" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.PlayerData), global::Google.Protobuf.WellKnownTypes.PlayerData.Parser, new[]{ "Id", "PartIndex" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Response), global::Google.Protobuf.WellKnownTypes.Response.Parser, new[]{ "Code", "Msg", "Value" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Login), global::Google.Protobuf.WellKnownTypes.Login.Parser, new[]{ "Id", "Pw" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.WellKnownTypes.Register), global::Google.Protobuf.WellKnownTypes.Register.Parser, new[]{ "Id", "Pw", "Phone", "Email" }, null, null, null, null),
@@ -99,7 +99,7 @@ namespace Google.Protobuf.WellKnownTypes {
       response_ = other.response_ != null ? other.response_.Clone() : null;
       login_ = other.login_ != null ? other.login_.Clone() : null;
       register_ = other.register_ != null ? other.register_.Clone() : null;
-      createPlayer_ = other.createPlayer_ != null ? other.createPlayer_.Clone() : null;
+      playerData_ = other.playerData_ != null ? other.playerData_.Clone() : null;
       playerInfos_ = other.playerInfos_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -179,17 +179,17 @@ namespace Google.Protobuf.WellKnownTypes {
       }
     }
 
-    /// <summary>Field number for the "createPlayer" field.</summary>
-    public const int CreatePlayerFieldNumber = 6;
-    private global::Google.Protobuf.WellKnownTypes.CreatePlayer createPlayer_;
+    /// <summary>Field number for the "playerData" field.</summary>
+    public const int PlayerDataFieldNumber = 6;
+    private global::Google.Protobuf.WellKnownTypes.PlayerData playerData_;
     /// <summary>
     ///创建角色的信息
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Google.Protobuf.WellKnownTypes.CreatePlayer CreatePlayer {
-      get { return createPlayer_; }
+    public global::Google.Protobuf.WellKnownTypes.PlayerData PlayerData {
+      get { return playerData_; }
       set {
-        createPlayer_ = value;
+        playerData_ = value;
       }
     }
 
@@ -224,7 +224,7 @@ namespace Google.Protobuf.WellKnownTypes {
       if (!object.Equals(Response, other.Response)) return false;
       if (!object.Equals(Login, other.Login)) return false;
       if (!object.Equals(Register, other.Register)) return false;
-      if (!object.Equals(CreatePlayer, other.CreatePlayer)) return false;
+      if (!object.Equals(PlayerData, other.PlayerData)) return false;
       if (!PlayerInfos.Equals(other.PlayerInfos)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -237,7 +237,7 @@ namespace Google.Protobuf.WellKnownTypes {
       if (response_ != null) hash ^= Response.GetHashCode();
       if (login_ != null) hash ^= Login.GetHashCode();
       if (register_ != null) hash ^= Register.GetHashCode();
-      if (createPlayer_ != null) hash ^= CreatePlayer.GetHashCode();
+      if (playerData_ != null) hash ^= PlayerData.GetHashCode();
       hash ^= PlayerInfos.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -272,9 +272,9 @@ namespace Google.Protobuf.WellKnownTypes {
         output.WriteRawTag(42);
         output.WriteMessage(Register);
       }
-      if (createPlayer_ != null) {
+      if (playerData_ != null) {
         output.WriteRawTag(50);
-        output.WriteMessage(CreatePlayer);
+        output.WriteMessage(PlayerData);
       }
       playerInfos_.WriteTo(output, _map_playerInfos_codec);
       if (_unknownFields != null) {
@@ -300,8 +300,8 @@ namespace Google.Protobuf.WellKnownTypes {
       if (register_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Register);
       }
-      if (createPlayer_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CreatePlayer);
+      if (playerData_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerData);
       }
       size += playerInfos_.CalculateSize(_map_playerInfos_codec);
       if (_unknownFields != null) {
@@ -339,11 +339,11 @@ namespace Google.Protobuf.WellKnownTypes {
         }
         Register.MergeFrom(other.Register);
       }
-      if (other.createPlayer_ != null) {
-        if (createPlayer_ == null) {
-          CreatePlayer = new global::Google.Protobuf.WellKnownTypes.CreatePlayer();
+      if (other.playerData_ != null) {
+        if (playerData_ == null) {
+          PlayerData = new global::Google.Protobuf.WellKnownTypes.PlayerData();
         }
-        CreatePlayer.MergeFrom(other.CreatePlayer);
+        PlayerData.MergeFrom(other.PlayerData);
       }
       playerInfos_.Add(other.playerInfos_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -387,10 +387,10 @@ namespace Google.Protobuf.WellKnownTypes {
             break;
           }
           case 50: {
-            if (createPlayer_ == null) {
-              CreatePlayer = new global::Google.Protobuf.WellKnownTypes.CreatePlayer();
+            if (playerData_ == null) {
+              PlayerData = new global::Google.Protobuf.WellKnownTypes.PlayerData();
             }
-            input.ReadMessage(CreatePlayer);
+            input.ReadMessage(PlayerData);
             break;
           }
           case 58: {
@@ -403,11 +403,11 @@ namespace Google.Protobuf.WellKnownTypes {
 
   }
 
-  public sealed partial class CreatePlayer : pb::IMessage<CreatePlayer> {
-    private static readonly pb::MessageParser<CreatePlayer> _parser = new pb::MessageParser<CreatePlayer>(() => new CreatePlayer());
+  public sealed partial class PlayerData : pb::IMessage<PlayerData> {
+    private static readonly pb::MessageParser<PlayerData> _parser = new pb::MessageParser<PlayerData>(() => new PlayerData());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<CreatePlayer> Parser { get { return _parser; } }
+    public static pb::MessageParser<PlayerData> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -420,22 +420,22 @@ namespace Google.Protobuf.WellKnownTypes {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CreatePlayer() {
+    public PlayerData() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CreatePlayer(CreatePlayer other) : this() {
+    public PlayerData(PlayerData other) : this() {
       id_ = other.id_;
       partIndex_ = other.partIndex_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CreatePlayer Clone() {
-      return new CreatePlayer(this);
+    public PlayerData Clone() {
+      return new PlayerData(this);
     }
 
     /// <summary>Field number for the "id" field.</summary>
@@ -462,11 +462,11 @@ namespace Google.Protobuf.WellKnownTypes {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as CreatePlayer);
+      return Equals(other as PlayerData);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(CreatePlayer other) {
+    public bool Equals(PlayerData other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -525,7 +525,7 @@ namespace Google.Protobuf.WellKnownTypes {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(CreatePlayer other) {
+    public void MergeFrom(PlayerData other) {
       if (other == null) {
         return;
       }
